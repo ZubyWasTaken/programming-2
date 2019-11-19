@@ -42,6 +42,32 @@ public class Review {
      * @return
      */
     
+    public String getReviewer(){
+        return reviewer;
+    }
+    
+    public void setReviewer(String reviewer){
+        this.reviewer = reviewer;
+    }
+    
+    public int getRating(){
+        return rating;
+    }
+    
+    public void setRating(int rating){
+        this.rating = rating;
+    }
+    
+    
+    public String toString(char delimiter) {
+        String output = "";
+        for (Customer item: this.items) {
+            output += item.toString(delimiter);
+        }
+        return output;
+    }
+    
+    
     @Override
     public String toString() {
         return "Review{" + "reviewer=" + reviewer + ", rating=" + Integer.toString(rating) + '}';

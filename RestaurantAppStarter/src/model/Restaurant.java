@@ -6,6 +6,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -22,7 +24,8 @@ public class Restaurant {
     
     static final char EOLN='\n';       
     static final String QUOTE="\""; 
-
+    
+    
     /**
      *
      */
@@ -82,6 +85,34 @@ public class Restaurant {
     }    
 
     // Methods required: getters, setters, add, hashCode, equals, compareTo, comparator
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public String getLocation(){
+        return location;
+    }
+    
+    public void setLocation(String location){
+        this.location = location;
+    }
+    
+    public List getReviewsCollection(){
+        return reviewsCollection;
+    }
+    
+    public void setReviewsCollection(List<Review> reviewsCollection){
+        this.reviewsCollection = reviewsCollection;
+    }
+    
+    public Review addReview(){
+            return review;
+    }
 
     /**
      *
@@ -92,5 +123,13 @@ public class Restaurant {
     public String toString() {
         return "\nRestaurant Id: " + id + " - Name: " + name +            
                 " - Location: " + location + "\nReviews: " + reviewsCollection + "\n";
-    }      
+    }    
+    
+    public String toString(char delimiter) {
+        String output = "";
+        for (Customer item: this.items) {
+            output += item.toString(delimiter);
+        }
+        return output;
+    }
 }

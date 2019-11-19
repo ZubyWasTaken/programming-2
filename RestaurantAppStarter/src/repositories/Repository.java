@@ -1,10 +1,10 @@
 package repositories;
 
-//import java.util.function.Predicate;
-//import model.Restaurant;
+import java.util.function.Predicate;
+import model.Restaurant;
 
 
-/*public class Repository implements RepositoryInterface {
+public class Repository implements RepositoryInterface {
     private CollectionChoice<Restaurant> items;    
     
     public Repository() {
@@ -59,4 +59,4 @@ package repositories;
     public void store(String filename) {       
         // create dao and execute store    
     }        
-}*/
+}
