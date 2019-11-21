@@ -6,7 +6,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
@@ -24,6 +23,13 @@ public class Restaurant {
     
     static final char EOLN='\n';       
     static final String QUOTE="\""; 
+    
+    public static Comparator<Restaurant> RestaurantNameComparator = (Restaurant rest1, Restaurant rest2) -> {
+        String restName1 = rest1.getName();
+        String restName2 = rest2.getName();
+        
+        return restName1.compareTo(restName2);
+    };
     
     
     /**
@@ -110,8 +116,8 @@ public class Restaurant {
         this.reviewsCollection = reviewsCollection;
     }
     
-    public Review addReview(){
-            return review;
+    public void addReview(Review review) {
+        this.reviewsCollection.add(review);
     }
 
     /**
@@ -125,11 +131,11 @@ public class Restaurant {
                 " - Location: " + location + "\nReviews: " + reviewsCollection + "\n";
     }    
     
-    public String toString(char delimiter) {
-        String output = "";
-        for (Customer item: this.items) {
-            output += item.toString(delimiter);
-        }
-        return output;
-    }
+//    public String toString(char delimiter) {
+//        String output = "";
+//        for (Customer item: this.items) {
+//            output += item.toString(delimiter);
+//        }
+//        return output;
+//    }
 }

@@ -1,62 +1,62 @@
-package repositories;
-
-import java.util.function.Predicate;
-import model.Restaurant;
-
-
-public class Repository implements RepositoryInterface {
-    private CollectionChoice<Restaurant> items;    
-    
-    public Repository() {
-        this.items = new CollectionChoiceImplementation<>();       
-    }
-    
-    public Repository(CollectionChoice<Restaurant> items) {        
-        this.items = items;
-    }
-    
-    public Repository(String filename) {
-        this();
-        // Create dao and execute load  
-    }
-    
-    @Override
-    public CollectionChoice<Restaurant> getItems() {        
-        return this.items;
-    }
-    
-    @Override
-    public void setItems(CollectionChoice<Restaurant> items) {        
-        this.items = items;
-    }
-    
-    @Override
-    public void add(Restaurant item) {
-        this.items.add(item);
-    }
-       
-    @Override
-    public void remove(int id) {
-        Predicate<Restaurant> predicate = e->e.getId() == id;       
-        this.items.removeIf(predicate);
-    }
-    
-    @Override
-    public Restaurant getItem(int id) {
-        for (Restaurant item:this.items) {
-            if (item.getId() == id)
-                return item;
-        }
-        return null;
-    }
-    
-    @Override
-    public String toString() {
-        return "\nItems: " + this.items;
-    }    
-    
-    @Override
-    public void store(String filename) {       
-        // create dao and execute store    
-    }        
-}
+//package repositories;
+//
+//import java.util.function.Predicate;
+//import model.Restaurant;
+//
+//
+//public class Repository implements RepositoryInterface {
+//    private CollectionChoice<Restaurant> items;    
+//    
+//    public Repository() {
+//        this.items = new CollectionChoiceImplementation<>();       
+//    }
+//    
+//    public Repository(CollectionChoice<Restaurant> items) {        
+//        this.items = items;
+//    }
+//    
+//    public Repository(String filename) {
+//        this();
+//        // Create dao and execute load  
+//    }
+//    
+//    @Override
+//    public CollectionChoice<Restaurant> getItems() {        
+//        return this.items;
+//    }
+//    
+//    @Override
+//    public void setItems(CollectionChoice<Restaurant> items) {        
+//        this.items = items;
+//    }
+//    
+//    @Override
+//    public void add(Restaurant item) {
+//        this.items.add(item);
+//    }
+//       
+//    @Override
+//    public void remove(int id) {
+//        Predicate<Restaurant> predicate = e->e.getId() == id;       
+//        this.items.removeIf(predicate);
+//    }
+//    
+//    @Override
+//    public Restaurant getItem(int id) {
+//        for (Restaurant item:this.items) {
+//            if (item.getId() == id)
+//                return item;
+//        }
+//        return null;
+//    }
+//    
+//    @Override
+//    public String toString() {
+//        return "\nItems: " + this.items;
+//    }    
+//    
+//    @Override
+//    public void store(String filename) {       
+//        // create dao and execute store    
+//    }        
+//}
