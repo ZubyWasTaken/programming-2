@@ -6,21 +6,31 @@
 package controllers;
 
 import helpers.InputHelper;
+import repositories.Repository;
 
 /**
  *
  * @author mga
  */
 public class RestaurantController {
-    // private final Repository repository;
+     private final Repository repository;
     
     /**
      *
      */
         
     public RestaurantController() {
-       // to be completed
+       InputHelper inputHelper = new InputHelper();
+        char c = inputHelper.readCharacter("Load an already existing Customers File (Y/N)?");
+        if (c == 'Y' || c == 'y') {
+            String fileName = inputHelper.readString("Enter filename");               
+            this.repository = new Repository(fileName);
+        }
+        else {
+            this.repository = new Repository();
+        }
     }
+    
    
     /**
      *

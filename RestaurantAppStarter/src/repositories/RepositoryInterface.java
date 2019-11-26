@@ -1,5 +1,6 @@
 package repositories;
 
+import java.util.List;
 import model.Restaurant;
 
 public interface RepositoryInterface {
@@ -17,7 +18,7 @@ public interface RepositoryInterface {
      */
     Restaurant getItem(int id);
 
-    //CollectionChoice<Restaurant> getItems();
+    List<Restaurant> getItems();
 
     /**
      *
@@ -26,7 +27,7 @@ public interface RepositoryInterface {
     
     void remove(int id);
 
-    //void setItems(CollectionChoice<Restaurant> items);
+    void setItems(List<Restaurant> items);
 
     /**
      *
