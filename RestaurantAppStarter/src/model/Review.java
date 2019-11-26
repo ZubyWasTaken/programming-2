@@ -10,12 +10,12 @@ package model;
  * @author mga
  */
 public class Review {
-    
+
     private String reviewer;
     private int rating;
-    
-    static final char EOLN='\n';       
-    static final String QUOTE="\""; 
+
+    static final char EOLN = '\n';
+    static final String QUOTE = "\"";
 
     /**
      *
@@ -34,42 +34,35 @@ public class Review {
         this.reviewer = reviewer;
         this.rating = rating;
     }
-    
-    // Methods required: getters, setters
 
+    // Methods required: getters, setters
     /**
      *
      * @return
      */
-    
-    public String getReviewer(){
+    public String getReviewer() {
         return reviewer;
     }
-    
-    public void setReviewer(String reviewer){
+
+    public void setReviewer(String reviewer) {
         this.reviewer = reviewer;
     }
-    
-    public int getRating(){
+
+    public int getRating() {
         return rating;
     }
-    
-    public void setRating(int rating){
+
+    public void setRating(int rating) {
         this.rating = rating;
     }
-    
-    
+
     public String toString(char delimiter) {
-        String output = "";
-        for (Customer item: this.items) {
-            output += item.toString(delimiter);
-        }
+        String output = this.reviewer + delimiter + QUOTE + Integer.toString(this.rating) + EOLN;
         return output;
     }
-    
-    
+
     @Override
     public String toString() {
         return "Review{" + "reviewer=" + reviewer + ", rating=" + Integer.toString(rating) + '}';
-    }   
+    }
 }
