@@ -13,6 +13,16 @@ import repositories.Repository;
  */
 public class DAOTextImpl {
 
+    public Object load(String filename) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void store(String filename, Repository aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
-    
+    private String stripQuotes(String str) {
+        return str.substring(1, str.length()-1);
+    }
 }
