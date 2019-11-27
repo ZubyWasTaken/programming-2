@@ -6,6 +6,7 @@
 package controllers;
 
 import helpers.InputHelper;
+import java.io.IOException;
 import java.util.List;
 import model.Restaurant;
 import repositories.Repository;
@@ -21,7 +22,7 @@ public class RestaurantController {
      *
      */
         
-    public RestaurantController() {
+    public RestaurantController() throws IOException {
        InputHelper inputHelper = new InputHelper();
         char c = inputHelper.readCharacter("Load an already existing Customers File (Y/N)?");
         if (c == 'Y' || c == 'y') {

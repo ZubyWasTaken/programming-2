@@ -23,7 +23,7 @@ public class Repository implements RepositoryInterface {
     public Repository(String filename) throws IOException {
         this();
         DAOTextImpl dao = new DAOTextImpl();
-        this.items = dao.load(filename).getItems();         
+        this.items = (List<Restaurant>) dao.load(filename);         
     }
 
     @Override
