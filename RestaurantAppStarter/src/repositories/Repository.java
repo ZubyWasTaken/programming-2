@@ -1,6 +1,7 @@
 package repositories;
 
 import daos.DAOTextImpl;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -19,10 +20,10 @@ public class Repository implements RepositoryInterface {
         this.items = (List<Restaurant>) items;
     }
 
-    public Repository(String filename) {
+    public Repository(String filename) throws IOException {
         this();
         DAOTextImpl dao = new DAOTextImpl();
-//        this.items = dao.load(filename).getItems();         
+        this.items = dao.load(filename).getItems();         
     }
 
     @Override
