@@ -6,6 +6,7 @@
 package restaurantapp;
 
 import controllers.RestaurantController;
+import java.io.IOException;
 
 /**
  *
@@ -15,8 +16,9 @@ public class RestaurantApp {
 
     /**
      *
+     * @throws java.io.IOException
      */
-    public static void run() {    
+    public static void run() throws IOException {    
         System.out.println("Restaurant Reviews App\n=====================\n\n");
         
         RestaurantController restaurantController = new RestaurantController();  
@@ -28,8 +30,9 @@ public class RestaurantApp {
     
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         RestaurantApp restaurantApp = new RestaurantApp();
         restaurantApp.run();
     }

@@ -32,35 +32,39 @@ public class DAOTextImpl {
     public Repository load(String filename) throws IOException {
         char DELIMITER = ',';
 
-        Repository repository;
+        Repository repository = null;
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 
-            int restaurantID, numReviews;
-            String restaurantName, restaurantLocation;
+            int restaurantID;
+            int numReviews;
+            String restaurantName;
+            String restaurantLocation;
             
 
             String[] temp;
             String line = br.readLine();
             temp = line.split(Character.toString(DELIMITER));
-            restaurantID = Integer.parseInt(temp[0]);
+//            restaurantID = Integer.parseInt(temp[0]);
+             restaurantID = Integer.parseInt(temp[0]);
             restaurantName = stripQuotes(temp[1]);
+//            restaurantName = (temp[1]);
             restaurantLocation = stripQuotes(temp[2]);
 
-            numReviews = Integer.parseInt(temp[2]);
-            ArrayList<Review> reviews = new ArrayList<>();
-            Review newReview;
+            numReviews = Integer.parseInt(temp[3]);
+            List<Review> reviews = new ArrayList<>();
+            
             for (int i = 0; i < numReviews; i++) {
                 line = br.readLine();
                 temp = line.split(Character.toString(DELIMITER));
                 String reviewerName = stripQuotes(temp[0]);
-                int rating = parseInt(stripQuotes(temp[1]));
+                int rating = parseInt(temp[1]);
 
-                newReview = new Review(reviewerName, rating);
-                reviews.add(newReview);
+                Review review = new Review(reviewerName, rating);
+                reviews.add(review);
             }
             
             List<Restaurant> restaurant;
-            restaurant = (List<Restaurant>) new Restaurant(restaurantID, restaurantName, restaurantLocation, reviews);
+            restaurant =  (List<Restaurant>) new Restaurant(restaurantID, restaurantName, restaurantLocation, reviews);
             return (Repository) restaurant;
         } catch (IOException ex) {
             Logger.getLogger(RestaurantController.class.getName()).log(Level.SEVERE, null, ex);
