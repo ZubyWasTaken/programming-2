@@ -32,45 +32,49 @@ public class DAOTextImpl {
     public Repository load(String filename) throws IOException {
         char DELIMITER = ',';
 
-        Repository repository = null;
+        Repository repository = new Repository();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-
-            int restaurantID;
-            int numReviews;
-            String restaurantName;
-            String restaurantLocation;
-            
 
             String[] temp;
             String line = br.readLine();
-            temp = line.split(Character.toString(DELIMITER));
-//            restaurantID = Integer.parseInt(temp[0]);
-             restaurantID = Integer.parseInt(temp[0]);
-            restaurantName = stripQuotes(temp[1]);
-//            restaurantName = (temp[1]);
-            restaurantLocation = stripQuotes(temp[2]);
 
-            numReviews = Integer.parseInt(temp[3]);
-            List<Review> reviews = new ArrayList<>();
-            
-            for (int i = 0; i < numReviews; i++) {
-                line = br.readLine();
+            while (line != null) {
+
+                int restaurantID;
+                int numReviews;
+                String restaurantName;
+                String restaurantLocation;
                 temp = line.split(Character.toString(DELIMITER));
-                String reviewerName = stripQuotes(temp[0]);
-                int rating = parseInt(temp[1]);
+//            restaurantID = Integer.parseInt(temp[0]);
+                restaurantID = Integer.parseInt(temp[0]);
+                restaurantName = stripQuotes(temp[1]);
+//            restaurantName = (temp[1]);
+                restaurantLocation = stripQuotes(temp[2]);
 
-                Review review = new Review(reviewerName, rating);
-                reviews.add(review);
+                numReviews = Integer.parseInt(temp[3]);
+                List<Review> reviews = new ArrayList<>();
+
+                for (int i = 0; i < numReviews; i++) {
+                    line = br.readLine();
+                    temp = line.split(Character.toString(DELIMITER));
+                    String reviewerName = stripQuotes(temp[0]);
+                    int rating = parseInt(temp[1]);
+
+                    Review review = new Review(reviewerName, rating);
+                    reviews.add(review);
+                }
+
+                Restaurant restaurant = new Restaurant(restaurantID, restaurantName, restaurantLocation, reviews);
+                repository.add(restaurant);
+                line = br.readLine();
+
             }
-            
-            List<Restaurant> restaurant;
-            restaurant =  (List<Restaurant>) new Restaurant(restaurantID, restaurantName, restaurantLocation, reviews);
-            return (Repository) restaurant;
+            br.close();
         } catch (IOException ex) {
             Logger.getLogger(RestaurantController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
+        return repository;
     }
 
     public void store(String filename, Repository aThis) {

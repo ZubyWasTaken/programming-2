@@ -13,17 +13,17 @@ public class Repository implements RepositoryInterface {
 
     public Repository() {
         this.items = new ArrayList<>();
-        //this.items = new LinkedList<>();        
+              
     }
 
     public Repository(List<Restaurant> items) {
-        this.items = (List<Restaurant>) items;
+        this.items = items;
     }
 
     public Repository(String filename) throws IOException {
         this();
         DAOTextImpl dao = new DAOTextImpl();
-        this.items = (List<Restaurant>) dao.load(filename);         
+        this.items =  dao.load(filename).getItems();         
     }
 
     @Override
