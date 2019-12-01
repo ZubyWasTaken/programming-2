@@ -10,6 +10,9 @@ import model.Restaurant;
 public class Repository implements RepositoryInterface {
 
     private List<Restaurant> items;
+    
+    static final char EOLN = '\n';
+    static final String QUOTE = "\"";
 
     public Repository() {
         this.items = new ArrayList<>();
@@ -66,6 +69,8 @@ public class Repository implements RepositoryInterface {
 //        String output = this.items + delimiter + QUOTE + Integer.toString(this.rating) + EOLN;
 //        return output;
 //    }
+    
+   
 
     @Override
     public void store(String filename) {

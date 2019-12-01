@@ -5,20 +5,12 @@
  */
 package daos;
 
-import controllers.RestaurantController;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Restaurant;
 import model.Review;
 import repositories.Repository;
