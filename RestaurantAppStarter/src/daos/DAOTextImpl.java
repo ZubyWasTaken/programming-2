@@ -71,7 +71,8 @@ public class DAOTextImpl {
             }
             br.close();
         } catch (IOException ex) {
-            Logger.getLogger(RestaurantController.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(RestaurantController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error! Could not load file.");
         }
 
         return repository;
