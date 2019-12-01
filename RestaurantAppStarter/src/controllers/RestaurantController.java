@@ -138,19 +138,10 @@ public class RestaurantController {
         List<Restaurant> repositoryItems = this.repository.getItems();
 
         Set<Restaurant> newSet = new TreeSet(Restaurant.RestaurantNameComparator);
-        newSet.addAll(repositoryItems);     
-        System.out.println(newSet); 
-        
-        
-        
-        
-    
+        newSet.addAll(repositoryItems);
+        System.out.println(newSet);
+
     }
-    
-
-        
-
-    
 
     private void listRestaurantRatings() {
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Ratings");
