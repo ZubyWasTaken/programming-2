@@ -134,6 +134,11 @@ public class RestaurantController {
     private void listLocationRestaurantDataInNameOrder() {
         System.out.format("\033[31m%s\033[0m%n", "Name Order");
         System.out.format("\033[31m%s\033[0m%n", "==========");
+        
+        List<Restaurant> repositoryItems = this.repository.getItems();
+ 
+      
+        
     }
 
     private void listRestaurantRatings() {
