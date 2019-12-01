@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 import model.Restaurant;
+import static model.Restaurant.RestaurantNameComparator;
 import model.Review;
 import repositories.Repository;
 
@@ -111,14 +114,12 @@ public class RestaurantController {
         BufferedReader reader
                 = new BufferedReader(new InputStreamReader(System.in));
 
-        
         System.out.println("Enter the ID of the restaurant:");
         restaurantID = parseInt((reader.readLine()));
         System.out.println("Enter reviewer name: ");
         reviewerName = reader.readLine();
         System.out.println("Enter rating: ");
         rating = parseInt((reader.readLine()));
-        
 
         Review newReview = new Review(reviewerName, rating);
 
@@ -127,19 +128,29 @@ public class RestaurantController {
         Restaurant tempRestaurant = repositoryItems.get(restaurantID - 1);
 
         tempRestaurant.addReview(newReview);
-        
 
     }
 
     private void listLocationRestaurantDataInNameOrder() {
         System.out.format("\033[31m%s\033[0m%n", "Name Order");
         System.out.format("\033[31m%s\033[0m%n", "==========");
-        
+
         List<Restaurant> repositoryItems = this.repository.getItems();
- 
-      
+
+        Set<Restaurant> newSet = new TreeSet(Restaurant.RestaurantNameComparator);
+        newSet.addAll(repositoryItems);     
+        System.out.println(newSet); 
         
+        
+        
+        
+    
     }
+    
+
+        
+
+    
 
     private void listRestaurantRatings() {
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Ratings");

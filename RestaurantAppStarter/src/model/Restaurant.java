@@ -26,12 +26,27 @@ public class Restaurant {
     static final char EOLN = '\n';
     static final String QUOTE = "\"";
 
-    public static Comparator<Restaurant> RestaurantNameComparator = (Restaurant rest1, Restaurant rest2) -> {
-        String restName1 = rest1.getName();
-        String restName2 = rest2.getName();
-
-        return restName1.compareTo(restName2);
-    };
+//    public static Comparator<Restaurant> RestaurantNameComparator = (Restaurant rest1, Restaurant rest2) -> {
+//        String restName1 = rest1.getName();
+//        String restName2 = rest2.getName();
+//        
+//        return restName1.compareTo(restName2);
+//    };
+    
+    /**
+     *
+     */
+    public static Comparator<Restaurant> RestaurantNameComparator 
+                      = (Restaurant rest1, Restaurant rest2) -> {
+                          String restName1 = rest1.getName();
+                          String restName2 = rest2.getName();
+                          
+                          //ascending order
+                          return restName1.compareTo(restName2);
+                          
+                          //descending order
+                          //return custName2.compareTo(custName1);
+    };        
 
     /**
      *
@@ -154,6 +169,10 @@ public class Restaurant {
         //ascending order
         return Restaurant.lastIdAllocated - id;
     }
+    
+    
+   	
+    
 
     @Override
     public String toString() {

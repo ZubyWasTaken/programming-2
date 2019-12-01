@@ -10,13 +10,11 @@ import model.Restaurant;
 public class Repository implements RepositoryInterface {
 
     private List<Restaurant> items;
-    
-    static final char EOLN = '\n';
-    static final String QUOTE = "\"";
+
 
     public Repository() {
         this.items = new ArrayList<>();
-              
+
     }
 
     public Repository(List<Restaurant> items) {
@@ -26,7 +24,7 @@ public class Repository implements RepositoryInterface {
     public Repository(String filename) throws IOException {
         this();
         DAOTextImpl dao = new DAOTextImpl();
-        this.items =  dao.load(filename).getItems();         
+        this.items = dao.load(filename).getItems();
     }
 
     @Override
@@ -64,13 +62,27 @@ public class Repository implements RepositoryInterface {
     public String toString() {
         return "\nItems: " + this.items;
     }
-
+    
 //    public String toString(char delimiter) {
-//        String output = this.items + delimiter + QUOTE + Integer.toString(this.rating) + EOLN;
+//        final String QUOTE = "\"";
+//        final String EOLN = "\n";
+//        String output =  this.items + QUOTE +
+//                         delimiter + EOLN;
+//        for (Restaurant item : items) {
+//            output += item.toString(delimiter);
+//        }
 //        return output;
 //    }
     
-   
+     public String toString(char delimiter) {
+        final String QUOTE = "\"";
+        final String EOLN = "\n";
+        String output =  this.items + QUOTE +
+                         delimiter + EOLN;
+        output = items.stream().map((item) -> item.toString(delimiter)).reduce(output, String::concat);
+        return output;
+    }
+    
 
     @Override
     public void store(String filename) {
