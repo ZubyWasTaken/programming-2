@@ -74,7 +74,7 @@ public class Review {
      * @return
      */
     public String toString(char delimiter) {
-        String output = this.reviewer + delimiter + QUOTE + Integer.toString(this.rating) + EOLN;
+        String output = QUOTE + this.reviewer  + QUOTE + delimiter + Integer.toString(this.rating) + EOLN;
         return output;
     }
 

@@ -175,7 +175,9 @@ public class Restaurant {
     
     public String toString(char delimiter) {
         String output = Integer.toString(this.id) + delimiter + QUOTE + this.name 
-                + QUOTE + this.location + QUOTE + this.reviewsCollection + EOLN;
+                + QUOTE + delimiter + QUOTE + this.location + QUOTE + delimiter + this.reviewsCollection.size() + EOLN;
+        for (Review review : this.reviewsCollection)
+            output += review.toString(delimiter);
         return output;
     }
     

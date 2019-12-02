@@ -65,6 +65,11 @@ public class RestaurantController {
                     break;
                 case 'Q':
 
+                    BufferedReader reader
+                            = new BufferedReader(new InputStreamReader(System.in));
+                    System.out.println("Enter Filename? ");
+                    String fileName = reader.readLine();             
+                    repository.store(fileName);
                     finished = true;
 
             }

@@ -63,27 +63,15 @@ public class Repository implements RepositoryInterface {
         return "\nItems: " + this.items;
     }
     
-//    public String toString(char delimiter) {
-//        final String QUOTE = "\"";
-//        final String EOLN = "\n";
-//        String output =  this.items + QUOTE +
-//                         delimiter + EOLN;
-//        for (Restaurant item : items) {
-//            output += item.toString(delimiter);
-//        }
-//        return output;
-//    }
-    
-     public String toString(char delimiter) {
-        final String QUOTE = "\"";
-        final String EOLN = "\n";
-        String output =  this.items + QUOTE +
-                         delimiter + EOLN;
-        output = items.stream().map((item) -> item.toString(delimiter)).reduce(output, String::concat);
+    public String toString(char delimiter) {
+        String output = "";
+        for (Restaurant item: this.items) {
+            output += item.toString(delimiter);
+        }
         return output;
     }
-    
 
+    
     @Override
     public void store(String filename) {
         DAOTextImpl dao = new DAOTextImpl();

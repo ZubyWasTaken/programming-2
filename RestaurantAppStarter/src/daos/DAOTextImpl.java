@@ -78,7 +78,7 @@ public class DAOTextImpl {
             output.print(repository.toString(DELIMITER));
             output.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(DAOTextImpl.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error! Could not store file.");
         }
     }
 
