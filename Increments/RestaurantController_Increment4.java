@@ -131,14 +131,33 @@ public class RestaurantController {
 
     }
 
-    private void listLocationRestaurantDataInNameOrder() {
+    private void listLocationRestaurantDataInNameOrder() throws IOException {
         System.out.format("\033[31m%s\033[0m%n", "Name Order");
         System.out.format("\033[31m%s\033[0m%n", "==========");
 
         List<Restaurant> repositoryItems = this.repository.getItems();
 
+        BufferedReader reader
+                = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter the ID of the restaurant:");
+        String location = reader.readLine();
+
+        List<Restaurant> newListRestaurant = new ArrayList<>();
+
+        for (int i = 0; i < repositoryItems.size(); i++) {
+            Restaurant getRestaurant = repositoryItems.get(i);
+            String restaurantLoc = getRestaurant.getLocation();
+
+            if (location.equals(restaurantLoc)) {
+                newListRestaurant.add(getRestaurant);
+            }
+
+        }
+
+        
         Set<Restaurant> newSet = new TreeSet(Restaurant.RestaurantNameComparator);
-        newSet.addAll(repositoryItems);
+        newSet.addAll(newListRestaurant);
         System.out.println(newSet);
 
     }

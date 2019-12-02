@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -63,10 +64,9 @@ public class RestaurantController {
                     listRestaurantRatings();
                     break;
                 case 'Q':
-                    
+
                     finished = true;
-                    
-                    
+
             }
         } while (!finished);
     }
@@ -100,8 +100,7 @@ public class RestaurantController {
         Restaurant newRestaurant = new Restaurant(restaurantName, restaurantLocation);
 
         this.repository.add(newRestaurant);
-        
-        
+
     }
 
     private void addReview() throws IOException {
@@ -132,14 +131,32 @@ public class RestaurantController {
 
     }
 
-    private void listLocationRestaurantDataInNameOrder() {
+    private void listLocationRestaurantDataInNameOrder() throws IOException {
         System.out.format("\033[31m%s\033[0m%n", "Name Order");
         System.out.format("\033[31m%s\033[0m%n", "==========");
 
         List<Restaurant> repositoryItems = this.repository.getItems();
 
+        BufferedReader reader
+                = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter the ID of the restaurant:");
+        String location = reader.readLine();
+
+        List<Restaurant> newListRestaurant = new ArrayList<>();
+
+        for (int i = 0; i < repositoryItems.size(); i++) {
+            Restaurant getRestaurant = repositoryItems.get(i);
+            String restaurantLoc = getRestaurant.getLocation();
+
+            if (location.equals(restaurantLoc)) {
+                newListRestaurant.add(getRestaurant);
+            }
+
+        }
+
         Set<Restaurant> newSet = new TreeSet(Restaurant.RestaurantNameComparator);
-        newSet.addAll(repositoryItems);
+        newSet.addAll(newListRestaurant);
         System.out.println(newSet);
 
     }
