@@ -44,18 +44,35 @@ public class Review {
         return reviewer;
     }
 
+    /**
+     *
+     * @param reviewer
+     */
     public void setReviewer(String reviewer) {
         this.reviewer = reviewer;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRating() {
         return rating;
     }
 
+    /**
+     *
+     * @param rating
+     */
     public void setRating(int rating) {
         this.rating = rating;
     }
 
+    /**
+     *
+     * @param delimiter
+     * @return
+     */
     public String toString(char delimiter) {
         String output = this.reviewer + delimiter + QUOTE + Integer.toString(this.rating) + EOLN;
         return output;

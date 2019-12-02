@@ -36,11 +36,10 @@ public class DAOTextImpl {
                 int numReviews;
                 String restaurantName;
                 String restaurantLocation;
+                
                 temp = line.split(Character.toString(DELIMITER));
-//            restaurantID = Integer.parseInt(temp[0]);
                 restaurantID = Integer.parseInt(temp[0]);
                 restaurantName = stripQuotes(temp[1]);
-//            restaurantName = (temp[1]);
                 restaurantLocation = stripQuotes(temp[2]);
 
                 numReviews = Integer.parseInt(temp[3]);
@@ -63,7 +62,6 @@ public class DAOTextImpl {
             }
             br.close();
         } catch (IOException ex) {
-//            Logger.getLogger(RestaurantController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error! Could not load file.");
         }
 

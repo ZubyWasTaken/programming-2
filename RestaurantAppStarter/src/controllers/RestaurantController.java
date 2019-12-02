@@ -10,14 +10,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import static java.lang.Integer.parseInt;
+import static java.lang.reflect.Array.get;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 import model.Restaurant;
-import static model.Restaurant.RestaurantNameComparator;
 import model.Review;
 import repositories.Repository;
 
@@ -146,6 +144,31 @@ public class RestaurantController {
     private void listRestaurantRatings() {
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Ratings");
         System.out.format("\033[31m%s\033[0m%n", "==================");
+
+        List<Restaurant> repositoryItems = this.repository.getItems();
+
+        float averageRating;
+        for (int i = 0; i < repositoryItems.size(); i++) {
+            Restaurant reviewsCollection = repositoryItems.get(i);
+
+            List<Review> reviews = reviewsCollection.getReviewsCollection();
+
+            float numRating = 0;
+            float totalRating = 0;
+
+            for (Review review : reviews) {
+
+                totalRating += review.getRating();
+                numRating++;
+
+            }
+
+            averageRating = totalRating / numRating;
+            System.out.println((reviewsCollection.getName()) + " has an average rating of: " + averageRating);
+            System.out.println("");
+
+        }
+
     }
 
     private void listRestaurantDataInIdOrder() {
