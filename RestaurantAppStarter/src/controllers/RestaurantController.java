@@ -63,7 +63,10 @@ public class RestaurantController {
                     listRestaurantRatings();
                     break;
                 case 'Q':
+                    
                     finished = true;
+                    
+                    
             }
         } while (!finished);
     }

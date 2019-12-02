@@ -4,8 +4,8 @@
 "Herbie Hancock",4
 "Diana Krall",2
 "k. d. Lang",3
-2,â€Court and Sparkâ€,â€Edinburghâ€,2
-â€Norah Jonesâ€,4
-â€Herbie Hancockâ€,5
+2,”Court and Spark”,”Edinburgh”,2
+”Norah Jones”,4
+”Herbie Hancock”,5
 3,"Food Inc","Glasgow",1
-â€œKris Kristoffersonâ€,3
+“Kris Kristofferson”,3
