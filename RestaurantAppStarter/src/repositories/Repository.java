@@ -87,6 +87,6 @@ public class Repository implements RepositoryInterface {
     @Override
     public void store(String filename) {
         DAOTextImpl dao = new DAOTextImpl();
-//        dao.store(filename, this);
+        dao.store(filename, this);
     }
 }

@@ -6,11 +6,15 @@
 package daos;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Restaurant;
 import model.Review;
 import repositories.Repository;
@@ -21,8 +25,9 @@ import repositories.Repository;
  */
 public class DAOTextImpl {
 
+    static final char DELIMITER = ',';
+
     public Repository load(String filename) throws IOException {
-        char DELIMITER = ',';
 
         Repository repository = new Repository();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -36,7 +41,7 @@ public class DAOTextImpl {
                 int numReviews;
                 String restaurantName;
                 String restaurantLocation;
-                
+
                 temp = line.split(Character.toString(DELIMITER));
                 restaurantID = Integer.parseInt(temp[0]);
                 restaurantName = stripQuotes(temp[1]);
@@ -68,8 +73,13 @@ public class DAOTextImpl {
         return repository;
     }
 
-    public void store(String filename, Repository aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void store(String filename, Repository repository) {
+        try (PrintWriter output = new PrintWriter(filename)) {
+            output.print(repository.toString(DELIMITER));
+            output.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DAOTextImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private String stripQuotes(String str) {

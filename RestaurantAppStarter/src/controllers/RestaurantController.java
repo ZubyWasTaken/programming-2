@@ -97,6 +97,8 @@ public class RestaurantController {
         Restaurant newRestaurant = new Restaurant(restaurantName, restaurantLocation);
 
         this.repository.add(newRestaurant);
+        
+        
     }
 
     private void addReview() throws IOException {
