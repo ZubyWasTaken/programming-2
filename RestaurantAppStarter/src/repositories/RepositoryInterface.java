@@ -3,6 +3,10 @@ package repositories;
 import java.util.List;
 import model.Restaurant;
 
+/**
+ *
+ * @author Zuby
+ */
 public interface RepositoryInterface {
 
     /**
@@ -18,6 +22,10 @@ public interface RepositoryInterface {
      */
     Restaurant getItem(int id);
 
+    /**
+     *
+     * @return
+     */
     List<Restaurant> getItems();
 
     /**
@@ -27,6 +35,10 @@ public interface RepositoryInterface {
     
     void remove(int id);
 
+    /**
+     *
+     * @param items
+     */
     void setItems(List<Restaurant> items);
 
     /**

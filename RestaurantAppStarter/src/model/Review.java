@@ -17,6 +17,7 @@ public class Review {
     static final char EOLN = '\n';
     static final String QUOTE = "\"";
 
+    // creates review object with a reviewer name to be set, and rating as 0.
     /**
      *
      */
@@ -25,6 +26,7 @@ public class Review {
         this.rating = 0;
     }
 
+    // creates a review with the reviewer and rating set by values passed in.
     /**
      *
      * @param reviewer
@@ -35,7 +37,8 @@ public class Review {
         this.rating = rating;
     }
 
-    // Methods required: getters, setters
+    
+    // returns the reviewer name.
     /**
      *
      * @return
@@ -44,6 +47,7 @@ public class Review {
         return reviewer;
     }
 
+    // sets the reviewers name with the value passed in.
     /**
      *
      * @param reviewer
@@ -52,6 +56,7 @@ public class Review {
         this.reviewer = reviewer;
     }
 
+    // returns the rating.
     /**
      *
      * @return
@@ -60,6 +65,7 @@ public class Review {
         return rating;
     }
 
+    // sets the rating
     /**
      *
      * @param rating
@@ -68,16 +74,18 @@ public class Review {
         this.rating = rating;
     }
 
+    // converts the review to a string and returns it formatted.
     /**
      *
      * @param delimiter
      * @return
      */
     public String toString(char delimiter) {
-        String output = QUOTE + this.reviewer  + QUOTE + delimiter + Integer.toString(this.rating) + EOLN;
+        String output = QUOTE + this.reviewer + QUOTE + delimiter + Integer.toString(this.rating) + EOLN;
         return output;
     }
 
+    // converts review to string and returns.
     @Override
     public String toString() {
         return "Review{" + "reviewer=" + reviewer + ", rating=" + Integer.toString(rating) + '}';

@@ -7,21 +7,36 @@ import java.util.List;
 import java.util.function.Predicate;
 import model.Restaurant;
 
+/**
+ *
+ * @author Zuby
+ */
 public class Repository implements RepositoryInterface {
 
     private List<Restaurant> items;
 
-    
+    /**
+     *
+     */
     // Creates a repository object which is empty.
     public Repository() {
         this.items = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param items
+     */
     // Creates a repository object which has 'items' loaded as a list of Restaurants.
     public Repository(List<Restaurant> items) {
         this.items = items;
     }
 
+    /**
+     *
+     * @param filename
+     * @throws IOException
+     */
     // Creates a repository by reading in a file and storing that data.
     public Repository(String filename) throws IOException {
         this();
@@ -29,12 +44,20 @@ public class Repository implements RepositoryInterface {
         this.items = dao.load(filename).getItems();
     }
 
+    /**
+     *
+     * @return
+     */
     // Returns the items in the repository object
     @Override
     public List<Restaurant> getItems() {
         return this.items;
     }
 
+    /**
+     *
+     * @param items
+     */
     // Sets the items in the repository object by passing a list of restaurants.
     @Override
     public void setItems(List<Restaurant> items) {
@@ -71,6 +94,11 @@ public class Repository implements RepositoryInterface {
         return "\nItems: " + this.items;
     }
 
+    /**
+     *
+     * @param delimiter
+     * @return
+     */
     // Formats the repository object with a given delimiter charachter.
     public String toString(char delimiter) {
         String output = "";

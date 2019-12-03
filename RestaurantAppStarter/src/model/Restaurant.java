@@ -120,37 +120,72 @@ public class Restaurant {
     }
 
     // Returns the name of the restaurant.
-    public String getName() {
+
+    /**
+     *
+     * @return
+     */
+        public String getName() {
         return name;
     }
 
     // Sets the name of the restaurant with a name that has been passed in.
-    public void setName(String name) {
+
+    /**
+     *
+     * @param name
+     */
+        public void setName(String name) {
         this.name = name;
     }
 
     // Returns the location of the restaurant.
-    public String getLocation() {
+
+    /**
+     *
+     * @return
+     */
+        public String getLocation() {
         return location;
     }
 
     // Sets the name of the location with a name that has been passed in.
-    public void setLocation(String location) {
+
+    /**
+     *
+     * @param location
+     */
+        public void setLocation(String location) {
         this.location = location;
     }
 
     // Returns the list of reviews for the restaurant.
-    public List getReviewsCollection() {
+
+    /**
+     *
+     * @return
+     */
+        public List getReviewsCollection() {
         return reviewsCollection;
     }
 
     // Sets the reviews of the restautrant with a list of reviews that have been passed in.
-    public void setReviewsCollection(List<Review> reviewsCollection) {
+
+    /**
+     *
+     * @param reviewsCollection
+     */
+        public void setReviewsCollection(List<Review> reviewsCollection) {
         this.reviewsCollection = reviewsCollection;
     }
 
     // Adds a review to the collection of reviews.
-    public void addReview(Review review) {
+
+    /**
+     *
+     * @param review
+     */
+        public void addReview(Review review) {
         this.reviewsCollection.add(review);
     }
 

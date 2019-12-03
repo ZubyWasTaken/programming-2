@@ -11,7 +11,17 @@ import repositories.Repository;
  */
 public interface DAOInterface {
 
-     public Repository load(String filename);
+    /**
+     *
+     * @param filename
+     * @return
+     */
+    public Repository load(String filename);
 
-     public void store(String filename, Repository repository);
+    /**
+     *
+     * @param filename
+     * @param repository
+     */
+    public void store(String filename, Repository repository);
 }

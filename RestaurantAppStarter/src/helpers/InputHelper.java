@@ -18,57 +18,84 @@ import java.util.logging.Logger;
  * @author mga
  */
 public class InputHelper {
+
     private final Scanner reader;
-    
+
+    /**
+     *
+     */
     public InputHelper() {
         reader = new Scanner(System.in);
     }
 
+    /**
+     *
+     * @param prompt
+     * @return
+     */
     // Read Character
     public char readCharacter(String prompt) {
-        
+
         System.out.println(prompt + ": ");
         char inputText = reader.nextLine().charAt(0);
         return inputText;
-    }    
-    
+    }
+
+    /**
+     *
+     * @param prompt
+     * @param validCharacters
+     * @return
+     */
     // Read Character - set of valid values
     public char readCharacter(String prompt, String validCharacters) {
         char inputText;
-        boolean inputError;        
+        boolean inputError;
         do {
-            inputError = false;             
+            inputError = false;
             System.out.println(prompt + ": ");
             inputText = reader.nextLine().toUpperCase().charAt(0);
             if (validCharacters.indexOf(inputText) == -1) {
                 inputError = true;
-                System.out.println("Character out of range: please re-enter: "); 
+                System.out.println("Character out of range: please re-enter: ");
             }
-        } while (inputError);        
+        } while (inputError);
         return inputText;
-    }     
-    
+    }
+
+    /**
+     *
+     * @param prompt
+     * @return
+     */
     // Read String
     public String readString(String prompt) {
-        
+
         System.out.println(prompt + ": ");
         String inputText = reader.nextLine();
         return inputText;
     }
-    
+
+    /**
+     *
+     * @param prompt
+     * @param max
+     * @param min
+     * @return
+     */
     // Read Int
     public int readInt(String prompt, int max, int min) {
         int inputNumber = 0;
         boolean inputError;
         do {
-            inputError = false;                
+            inputError = false;
             System.out.println(prompt + ": ");
 
             try {
                 inputNumber = Integer.parseInt(reader.nextLine());
                 if (inputNumber < min || inputNumber > max) {
                     inputError = true;
-                    System.out.println("Number out of range: please re-enter\n");                        
+                    System.out.println("Number out of range: please re-enter\n");
                 }
             } catch (NumberFormatException e) {
                 inputError = true;
@@ -76,14 +103,19 @@ public class InputHelper {
             }
         } while (inputError);
         return inputNumber;
-    } 
-    
+    }
+
+    /**
+     *
+     * @param prompt
+     * @return
+     */
     // Read Int
     public int readInt(String prompt) {
         int inputNumber = 0;
         boolean inputError;
         do {
-            inputError = false;                
+            inputError = false;
             System.out.println(prompt + ": ");
 
             try {
@@ -94,14 +126,19 @@ public class InputHelper {
             }
         } while (inputError);
         return inputNumber;
-    }     
-    
+    }
+
+    /**
+     *
+     * @param prompt
+     * @return
+     */
     // Read Float
     public float readFloat(String prompt) {
         float inputNumber = 0.0f;
         boolean inputError;
         do {
-            inputError = false;                
+            inputError = false;
             System.out.println(prompt + ": ");
 
             try {
@@ -112,8 +149,14 @@ public class InputHelper {
             }
         } while (inputError);
         return inputNumber;
-    }     
-    
+    }
+
+    /**
+     *
+     * @param prompt
+     * @param format
+     * @return
+     */
     // Read Date
     public Calendar readDate(String prompt, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -125,7 +168,7 @@ public class InputHelper {
             Logger.getLogger(InputHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);  
+        calendar.setTime(date);
         return calendar;
     }
 }
