@@ -231,9 +231,9 @@ public class RestaurantController {
          */
         float averageRating;
         for (int i = 0; i < repositoryItems.size(); i++) {
-            Restaurant reviewsCollection = repositoryItems.get(i);
+            Restaurant restaurant = repositoryItems.get(i);
 
-            List<Review> reviews = reviewsCollection.getReviewsCollection();
+            List<Review> reviews = restaurant.getReviewsCollection();
 
             float numRating = 0;
             float totalRating = 0;
@@ -259,7 +259,7 @@ public class RestaurantController {
              Loops through for each restaurant.
              */
             averageRating = totalRating / numRating;
-            System.out.println((reviewsCollection.getName()) + " has an average rating of: " + averageRating);
+            System.out.println((restaurant.getName()) + " has an average rating of: " + averageRating);
             System.out.println("");
 
         }
