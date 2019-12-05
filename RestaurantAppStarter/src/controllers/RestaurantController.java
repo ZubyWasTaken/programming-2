@@ -267,11 +267,11 @@ public class RestaurantController {
     }
 
     private void listRestaurantDataInIdOrder() {
-        
+
         /*
-        Since the restaurants are all stored in data order, it just gets the 
-        restaurants and displays them.
-        */
+         Since the restaurants are all stored in data order, it just gets the 
+         restaurants and displays them.
+         */
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
         System.out.format("\033[31m%s\033[0m%n", "===================");
 
