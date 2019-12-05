@@ -11,13 +11,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 import model.Restaurant;
-import static model.Restaurant.RestaurantNameComparator;
 import model.Review;
 import repositories.Repository;
 
@@ -84,6 +82,7 @@ public class RestaurantController {
     }
 
     private void addRestaurant() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant");
         System.out.format("\033[31m%s\033[0m%n", "==============");
 
@@ -101,9 +100,11 @@ public class RestaurantController {
         Restaurant newRestaurant = new Restaurant(restaurantName, restaurantLocation);
 
         this.repository.add(newRestaurant);
+
     }
 
     private void addReview() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant Review");
         System.out.format("\033[31m%s\033[0m%n", "=====================");
 
@@ -168,12 +169,16 @@ public class RestaurantController {
     }
 
     private void listRestaurantDataInIdOrder() {
+
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
         System.out.format("\033[31m%s\033[0m%n", "===================");
 
-        List<Restaurant> repositoryItems = this.repository.getItems();
+        ArrayList<Restaurant> repositoryItems = (ArrayList<Restaurant>) this.repository.getItems();
 
-        System.out.println(repositoryItems);
+        Collections.sort(repositoryItems, (Restaurant r1, Restaurant r2) -> Integer.compare(r1.getId(), r2.getId()));
 
+        repositoryItems.stream().forEach((restaurant) -> {
+            System.out.println(restaurant);
+        });
     }
 }

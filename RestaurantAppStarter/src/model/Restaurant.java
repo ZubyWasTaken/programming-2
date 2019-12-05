@@ -29,7 +29,6 @@ public class Restaurant {
     /**
      *
      */
-    // Compares one restaurant name with another and returns which is 'greater' or comes first.
     public static Comparator<Restaurant> RestaurantNameComparator
             = (Restaurant rest1, Restaurant rest2) -> {
                 String restName1 = rest1.getName();
@@ -41,11 +40,6 @@ public class Restaurant {
 
     /**
      *
-     */
-    /*
-     Creates a restaurant with an ID 1 more than the previous allocated ID,
-     a name and location which has to be set, and an empty list for the reviews
-     to be added to.
      */
     public Restaurant() {
         this.id = ++lastIdAllocated;
@@ -59,11 +53,6 @@ public class Restaurant {
      * @param name
      * @param location
      */
-    /*
-     Creates a restaurant with an ID 1 more than the previous allocated ID,
-     a name and location which has been passed in, and an empty list for the reviews
-     to be added to.
-     */
     public Restaurant(String name, String location) {
         this.id = ++lastIdAllocated;
         this.name = name;
@@ -76,10 +65,6 @@ public class Restaurant {
      * @param name
      * @param location
      * @param reviewsCollection
-     */
-    /*
-     Creates a restaurant with an ID 1 more than the previous allocated ID,
-     a name, location, and a list of reviews, which have all been passed in.
      */
     public Restaurant(String name, String location, List<Review> reviewsCollection) {
         this.id = ++lastIdAllocated;
@@ -95,12 +80,6 @@ public class Restaurant {
      * @param location
      * @param reviewsCollection
      */
-    /*
-     Creates a restaurant with an ID, name, location, and a list of reviews, which
-     have all been passed in.
-     If the ID passed in is greater than the last ID that has been allocated then
-     that ID which got passed in gets set to the last allocated ID.
-     */
     public Restaurant(int id, String name, String location, List<Review> reviewsCollection) {
         this.id = id;
         this.name = name;
@@ -114,78 +93,63 @@ public class Restaurant {
     /**
      * @return the id
      */
-    // Returns the ID of the restaurant.
     public int getId() {
         return id;
     }
-
-    // Returns the name of the restaurant.
 
     /**
      *
      * @return
      */
-        public String getName() {
+    public String getName() {
         return name;
     }
-
-    // Sets the name of the restaurant with a name that has been passed in.
 
     /**
      *
      * @param name
      */
-        public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-
-    // Returns the location of the restaurant.
 
     /**
      *
      * @return
      */
-        public String getLocation() {
+    public String getLocation() {
         return location;
     }
-
-    // Sets the name of the location with a name that has been passed in.
 
     /**
      *
      * @param location
      */
-        public void setLocation(String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
-
-    // Returns the list of reviews for the restaurant.
 
     /**
      *
      * @return
      */
-        public List getReviewsCollection() {
+    public List getReviewsCollection() {
         return reviewsCollection;
     }
-
-    // Sets the reviews of the restautrant with a list of reviews that have been passed in.
 
     /**
      *
      * @param reviewsCollection
      */
-        public void setReviewsCollection(List<Review> reviewsCollection) {
+    public void setReviewsCollection(List<Review> reviewsCollection) {
         this.reviewsCollection = reviewsCollection;
     }
-
-    // Adds a review to the collection of reviews.
 
     /**
      *
      * @param review
      */
-        public void addReview(Review review) {
+    public void addReview(Review review) {
         this.reviewsCollection.add(review);
     }
 
@@ -194,15 +158,15 @@ public class Restaurant {
      * @param o
      * @return
      */
-    // Checks equality.
     @Override
     public boolean equals(Object o) {
         if (o instanceof Restaurant) {
             Restaurant e = (Restaurant) o;
             return e.getId() == getId()
-                    && e.getId() == getId()
-                    && e.getLocation().equals(getLocation())
+                    && e.getName() == getName()
+                    && e.getLocation() == getLocation()
                     && e.getReviewsCollection().equals(getReviewsCollection());
+
         } else {
             return false;
         }
@@ -228,7 +192,6 @@ public class Restaurant {
      * @param compareCustomer
      * @return
      */
-    // Compares
     public int compareTo(Restaurant compareCustomer) {
         int id = ((Restaurant) compareCustomer).getId();
 
@@ -240,7 +203,6 @@ public class Restaurant {
      *
      * @return
      */
-    // Returns the restaurant values as a string.
     @Override
     public String toString() {
         return "\nRestaurant Id: " + id + " - Name: " + name
@@ -252,7 +214,6 @@ public class Restaurant {
      * @param delimiter
      * @return
      */
-    // Returns the restaurant values formatted as a string.
     public String toString(char delimiter) {
         String output = Integer.toString(this.id) + delimiter + QUOTE + this.name
                 + QUOTE + delimiter + QUOTE + this.location + QUOTE + delimiter + this.reviewsCollection.size() + EOLN;

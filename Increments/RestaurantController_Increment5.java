@@ -10,8 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import static java.lang.Integer.parseInt;
-import static java.lang.reflect.Array.get;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -82,6 +82,7 @@ public class RestaurantController {
     }
 
     private void addRestaurant() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant");
         System.out.format("\033[31m%s\033[0m%n", "==============");
 
@@ -99,9 +100,11 @@ public class RestaurantController {
         Restaurant newRestaurant = new Restaurant(restaurantName, restaurantLocation);
 
         this.repository.add(newRestaurant);
+
     }
 
     private void addReview() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant Review");
         System.out.format("\033[31m%s\033[0m%n", "=====================");
 
@@ -129,55 +132,71 @@ public class RestaurantController {
 
     }
 
-    private void listLocationRestaurantDataInNameOrder() {
+    private void listLocationRestaurantDataInNameOrder() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Name Order");
         System.out.format("\033[31m%s\033[0m%n", "==========");
 
         List<Restaurant> repositoryItems = this.repository.getItems();
 
+        BufferedReader reader
+                = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter the location of the restaurant:");
+        String location = reader.readLine();
+
+        List<Restaurant> newListRestaurant = new ArrayList<>();
+
+        repositoryItems.stream().forEach((getRestaurant) -> {
+            String restaurantLoc = getRestaurant.getLocation();
+            if (location.equals(restaurantLoc)) {
+                newListRestaurant.add(getRestaurant);
+            }
+        });
+
         Set<Restaurant> newSet = new TreeSet(Restaurant.RestaurantNameComparator);
-        newSet.addAll(repositoryItems);
+        newSet.addAll(newListRestaurant);
         System.out.println(newSet);
 
     }
 
     private void listRestaurantRatings() {
+
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Ratings");
         System.out.format("\033[31m%s\033[0m%n", "==================");
 
         List<Restaurant> repositoryItems = this.repository.getItems();
 
         float averageRating;
-        for (int i = 0; i < repositoryItems.size(); i++) {
-            Restaurant reviewsCollection = repositoryItems.get(i);
-
-            List<Review> reviews = reviewsCollection.getReviewsCollection();
+        for (Restaurant restaurant : repositoryItems) {
+            List<Review> reviews = restaurant.getReviewsCollection();
 
             float numRating = 0;
             float totalRating = 0;
 
             for (Review review : reviews) {
-
                 totalRating += review.getRating();
                 numRating++;
-
             }
 
             averageRating = totalRating / numRating;
-            System.out.println((reviewsCollection.getName()) + " has an average rating of: " + averageRating);
+            System.out.println((restaurant.getName()) + " has an average rating of: " + averageRating);
             System.out.println("");
-
         }
 
     }
 
     private void listRestaurantDataInIdOrder() {
+
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
         System.out.format("\033[31m%s\033[0m%n", "===================");
 
-        List<Restaurant> repositoryItems = this.repository.getItems();
+        ArrayList<Restaurant> repositoryItems = (ArrayList<Restaurant>) this.repository.getItems();
 
-        System.out.println(repositoryItems);
+        Collections.sort(repositoryItems, (Restaurant r1, Restaurant r2) -> Integer.compare(r1.getId(), r2.getId()));
 
+        repositoryItems.stream().forEach((restaurant) -> {
+            System.out.println(restaurant);
+        });
     }
 }

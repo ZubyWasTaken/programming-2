@@ -81,6 +81,7 @@ public class RestaurantController {
     }
 
     private void addRestaurant() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant");
         System.out.format("\033[31m%s\033[0m%n", "==============");
 
@@ -98,9 +99,11 @@ public class RestaurantController {
         Restaurant newRestaurant = new Restaurant(restaurantName, restaurantLocation);
 
         this.repository.add(newRestaurant);
+
     }
 
     private void addReview() throws IOException {
+
         System.out.format("\033[31m%s\033[0m%n", "Add Restaurant Review");
         System.out.format("\033[31m%s\033[0m%n", "=====================");
 
@@ -111,14 +114,12 @@ public class RestaurantController {
         BufferedReader reader
                 = new BufferedReader(new InputStreamReader(System.in));
 
-        
         System.out.println("Enter the ID of the restaurant:");
         restaurantID = parseInt((reader.readLine()));
         System.out.println("Enter reviewer name: ");
         reviewerName = reader.readLine();
         System.out.println("Enter rating: ");
         rating = parseInt((reader.readLine()));
-        
 
         Review newReview = new Review(reviewerName, rating);
 
@@ -127,7 +128,6 @@ public class RestaurantController {
         Restaurant tempRestaurant = repositoryItems.get(restaurantID - 1);
 
         tempRestaurant.addReview(newReview);
-        
 
     }
 
@@ -142,12 +142,16 @@ public class RestaurantController {
     }
 
     private void listRestaurantDataInIdOrder() {
+
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
         System.out.format("\033[31m%s\033[0m%n", "===================");
 
-        List<Restaurant> repositoryItems = this.repository.getItems();
+        ArrayList<Restaurant> repositoryItems = (ArrayList<Restaurant>) this.repository.getItems();
 
-        System.out.println(repositoryItems);
+        Collections.sort(repositoryItems, (Restaurant r1, Restaurant r2) -> Integer.compare(r1.getId(), r2.getId()));
 
+        repositoryItems.stream().forEach((restaurant) -> {
+            System.out.println(restaurant);
+        });
     }
 }

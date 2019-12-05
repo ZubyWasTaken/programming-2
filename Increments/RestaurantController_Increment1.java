@@ -6,9 +6,17 @@
 package controllers;
 
 import helpers.InputHelper;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import model.Restaurant;
+import model.Review;
 import repositories.Repository;
 
 /**
@@ -98,9 +106,19 @@ public class RestaurantController {
         System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
         System.out.format("\033[31m%s\033[0m%n", "===================");
         
-         List<Restaurant> repositoryItems = this.repository.getItems();
-            
-        System.out.println(repositoryItems);
+         private void listRestaurantDataInIdOrder() {
+
+        System.out.format("\033[31m%s\033[0m%n", "Restaurant Id Order");
+        System.out.format("\033[31m%s\033[0m%n", "===================");
+
+        ArrayList<Restaurant> repositoryItems = (ArrayList<Restaurant>) this.repository.getItems();
+
+        Collections.sort(repositoryItems, (Restaurant r1, Restaurant r2) -> Integer.compare(r1.getId(), r2.getId()));
+
+        repositoryItems.stream().forEach((restaurant) -> {
+            System.out.println(restaurant);
+        });
+    }
       
     }     
 }
